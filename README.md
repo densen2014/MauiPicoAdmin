@@ -2,7 +2,7 @@
 
 PicoServer 跨平台 Web 架构实战系列 (一) MAUI 中嵌入 PicoServer 入门
 
-https://github.com/densen2014/MauiPicoAdmin
+[https://github.com/densen2014/MauiPicoAdmin](https://www.cnblogs.com/densen2014/p/19670893)
 
 1️⃣ MAUI 中嵌入 PicoServer 入门
 
