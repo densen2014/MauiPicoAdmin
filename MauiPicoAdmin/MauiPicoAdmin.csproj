@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net10.0-android;net10.0-ios;net10.0-maccatalyst</TargetFrameworks>
@@ -71,5 +71,13 @@
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.10" />
 		<PackageReference Include="Syncfusion.Maui.Toolkit" Version="1.0.7" />
 	</ItemGroup>
+
+	<!--每次 Debug 前自动生成 wwwroot/filelist.txt，内容为 wwwroot 目录下所有文件的相对路径。-->
 	
+	<Target Name="GenerateWwwrootFileList" BeforeTargets="Build">
+    <ItemGroup>
+      <WwwrootFiles Include="Resources\Raw\wwwroot\**\*" />
+    </ItemGroup>
+    <WriteLinesToFile File="Resources\Raw\wwwroot\filelist.txt" Lines="@(WwwrootFiles->'%(RecursiveDir)%(Filename)%(Extension)')" Overwrite="true" />
+  </Target>
 </Project>

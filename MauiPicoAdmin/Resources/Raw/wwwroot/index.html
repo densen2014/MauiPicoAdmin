@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>PicoServer Admin</title>
+</head>
+
+<body>
+
+    <h1>PicoServer Web Admin</h1>
+
+    <button onclick="loadTime()">获取服务器时间</button>
+
+    <p id="result"></p>
+
+    <script>
+
+        async function loadTime() {
+            let res = await fetch("/api/time");
+            let data = await res.json();
+
+            document.getElementById("result").innerText = data.data.time;
+        }
+
+    </script>
+
+</body>
+</html>
