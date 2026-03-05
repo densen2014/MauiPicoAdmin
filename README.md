@@ -34,3 +34,11 @@
            │
         Device
 ```
+
+关键词：
+.NET MAUI
+PicoServer
+MAUI Web Server
+MAUI HTTP API
+嵌入式 Web Server
+MAUI Web Admin
