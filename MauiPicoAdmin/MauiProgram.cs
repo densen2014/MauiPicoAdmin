@@ -132,7 +132,7 @@ public class PicoAdmin
 
     private async Task ProductDetail(HttpListenerRequest request, HttpListenerResponse response)
     {
-        string id = request.QueryString["id"];
+        string? id = request.QueryString["id"];
 
         var result = new
         {
