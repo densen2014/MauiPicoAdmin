@@ -1,6 +1,4 @@
-# MauiPicoAdmin
-
-PicoServer 跨平台 Web 架构实战系列 (一) MAUI 中嵌入 PicoServer 入门
+# NET MAUI 嵌入式 Web 架构实战 
 
 [https://github.com/densen2014/MauiPicoAdmin](https://www.cnblogs.com/densen2014/p/19670893)
 
