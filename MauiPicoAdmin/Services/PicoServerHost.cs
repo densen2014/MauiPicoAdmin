@@ -19,8 +19,7 @@ public class PicoServerHost
     {
         var product = new ProductController();
         var demo = new DemoController();
-        //第三个参数 "/api/" 不合理，但目前 PicoServer 的 AddStaticFiles 方法没有提供更合理的方式来处理静态文件和 API 路由的冲突问题，所以暂时只能这样做
-        api.AddStaticFiles("/", wwwrootPath, "/api/");
+        api.AddStaticFiles("/", wwwrootPath);
         api.AddRoute("/api/hello", demo.Hello);
         api.AddRoute("/api/time", demo.GetTime);
         api.AddRoute("/api/status", demo.GetStatus);
