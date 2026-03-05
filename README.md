@@ -17,7 +17,7 @@
 
    
 
-##《MAUI + PicoServer 架构图（完整版）》
+## 《MAUI + PicoServer 架构图（完整版）》
 
 ```
         Browser
