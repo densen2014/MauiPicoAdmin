@@ -20,6 +20,13 @@
         ContentTemplate="{DataTemplate pages:ProjectListPage}"
         Route="projects" />
 
+
+    <ShellContent
+        Title="WebView"
+        Icon="{StaticResource IconDashboard}"
+        ContentTemplate="{DataTemplate pages:WebViewPage}"
+        Route="webview" />
+
     <ShellContent
         Title="Manage Meta"
         Icon="{StaticResource IconMeta}"
