@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using PicoServer;
 using Syncfusion.Maui.Toolkit.Hosting;
 using System.Net;
+using System.Text.Json;
 
 namespace MauiPicoAdmin;
 
@@ -74,6 +75,8 @@ public class PicoAdmin
         MyAPI.AddRoute("/", Hello);
         MyAPI.AddRoute("/api/time", GetTime);
         MyAPI.AddRoute("/api/status", GetStatus);
+        MyAPI.AddRoute("/api/product/list", ProductList);
+        MyAPI.AddRoute("/api/product/detail", ProductDetail);
 
         MyAPI.StartServer();
     }
@@ -86,12 +89,61 @@ public class PicoAdmin
 
     private async Task GetTime(HttpListenerRequest request, HttpListenerResponse response)
     {
-        var time = DateTime.Now.ToString();
-        await response.WriteAsync(time);
+        var result = new
+        {
+            code = 0,
+            message = "ok",
+            data = new
+            {
+                time = DateTime.Now
+            }
+        };
+
+        string json = System.Text.Json.JsonSerializer.Serialize(result);
+
+        response.ContentType = "application/json";
+        await response.WriteAsync(json);
     }
 
     private async Task GetStatus(HttpListenerRequest request, HttpListenerResponse response)
     {
         await response.WriteAsync("Server Running");
+    }
+    private async Task ProductList(HttpListenerRequest request, HttpListenerResponse response)
+    {
+        var products = new[]
+        {
+            new { id = "1", name = "Demo Product 1", price = 100 },
+            new { id = "2", name = "Demo Product 2", price = 200 },
+            new { id = "3", name = "Demo Product 3", price = 300 }
+        };
+
+        var result = new
+        {
+            code = 0,
+            message = "ok",
+            data = products
+        };
+
+        string json = JsonSerializer.Serialize(result);
+        response.ContentType = "application/json";
+        await response.WriteAsync(json);
+    }
+
+    private async Task ProductDetail(HttpListenerRequest request, HttpListenerResponse response)
+    {
+        string id = request.QueryString["id"];
+
+        var result = new
+        {
+            id = id,
+            name = "Demo Product",
+            price = 100
+        };
+
+        string json = JsonSerializer.Serialize(result);
+
+        response.ContentType = "application/json";
+        await response.WriteAsync(json);
     }
 }
