@@ -71,7 +71,10 @@ public class PicoAdmin
 
     public PicoAdmin()
     {
-        MyAPI.AddRoute("/", Hello); //添加根路由映射
+        MyAPI.AddRoute("/", Hello);
+        MyAPI.AddRoute("/api/time", GetTime);
+        MyAPI.AddRoute("/api/status", GetStatus);
+
         MyAPI.StartServer();
     }
 
@@ -79,5 +82,16 @@ public class PicoAdmin
     private async Task Hello(HttpListenerRequest request, HttpListenerResponse response)
     {
         await response.WriteAsync("Hello PicoServer");
+    }
+
+    private async Task GetTime(HttpListenerRequest request, HttpListenerResponse response)
+    {
+        var time = DateTime.Now.ToString();
+        await response.WriteAsync(time);
+    }
+
+    private async Task GetStatus(HttpListenerRequest request, HttpListenerResponse response)
+    {
+        await response.WriteAsync("Server Running");
     }
 }
