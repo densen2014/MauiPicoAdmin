@@ -44,8 +44,8 @@ public static class MauiProgram
             });
 
 #if DEBUG
-		builder.Logging.AddDebug();
-		builder.Services.AddLogging(configure => configure.AddDebug());
+        builder.Logging.AddDebug();
+        builder.Services.AddLogging(configure => configure.AddDebug());
 #endif
 
         builder.Services.AddSingleton<ProjectRepository>();
@@ -61,7 +61,10 @@ public static class MauiProgram
         builder.Services.AddTransientWithShellRoute<ProjectDetailPage, ProjectDetailPageModel>("project");
         builder.Services.AddTransientWithShellRoute<TaskDetailPage, TaskDetailPageModel>("task");
 
+        //builder.Services.AddSingleton(new JsonSerializerOptions
+        //{
+        //    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+        //});
         return builder.Build();
     }
-} 
- 
+}

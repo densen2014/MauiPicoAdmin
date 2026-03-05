@@ -15,23 +15,18 @@ public class ProductController
 
         var result = ApiResult.Success(data);
 
-        string json = JsonSerializer.Serialize(result);
-
-        response.ContentType = "application/json";
-        await response.WriteAsync(json);
+        await response.WriteJson(result);
     }
 
     public async Task Detail(HttpListenerRequest request, HttpListenerResponse response)
     {
         string? id = request.QueryString["id"];
 
-        var data = service.GetProduct(id);
+        var data = service.GetProduct(id ?? "");
 
         var result = ApiResult.Success(data);
 
-        string json = JsonSerializer.Serialize(result);
+        await response.WriteJson(result);
 
-        response.ContentType = "application/json";
-        await response.WriteAsync(json);
     }
 }

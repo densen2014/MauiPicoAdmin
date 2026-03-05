@@ -1,2 +1,3 @@
 filelist.txt
 index.html
+product.html
