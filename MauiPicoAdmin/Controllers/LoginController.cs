@@ -4,6 +4,7 @@ using System.Text.Json;
 
 namespace MauiPicoAdmin.Controllers;
 
+[ApiController]
 public partial class LoginController
 {
 
@@ -14,6 +15,7 @@ public partial class LoginController
     //    _jsonOptions = jsonOptions;
     //}
 
+    [ApiRoute("/api/login")]
     public async Task Login(HttpListenerRequest request, HttpListenerResponse response)
     {
         var body = await new StreamReader(request.InputStream).ReadToEndAsync();

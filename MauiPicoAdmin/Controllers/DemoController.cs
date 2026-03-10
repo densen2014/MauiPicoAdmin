@@ -3,13 +3,16 @@ using System.Net;
 
 namespace MauiPicoAdmin.Controllers;
 
+[ApiController]
 public class DemoController
 {
+    [ApiRoute("/api/hello")]
     public async Task Hello(HttpListenerRequest request, HttpListenerResponse response)
     {
         await response.WriteAsync("Hello PicoServer");
     }
 
+    [ApiRoute("/api/time")]
     public async Task GetTime(HttpListenerRequest request, HttpListenerResponse response)
     {
         var result = new
@@ -28,6 +31,7 @@ public class DemoController
         await response.WriteAsync(json);
     }
 
+    [ApiRoute("/api/status")]
     public async Task GetStatus(HttpListenerRequest request, HttpListenerResponse response)
     {
         await response.WriteAsync("Server Running");

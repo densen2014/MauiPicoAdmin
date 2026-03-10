@@ -10,4 +10,3 @@ public class RequireAttribute : Attribute
         Permission = permission;
     }
 }
- 

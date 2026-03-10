@@ -3,8 +3,10 @@ using static MauiPicoAdmin.AuthMiddleware;
 
 namespace MauiPicoAdmin.Controllers;
 
+[ApiController]
 public class UserController
 {
+    [ApiRoute("/api/user/list")]
     public async Task GetUserList(HttpListenerRequest request, HttpListenerResponse response)
     {
         if (!await RequireAuth(request, response))
