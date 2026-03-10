@@ -20,7 +20,7 @@ public class PicoServerHost
     private void RegisterRoutes()
     {
         api.AddStaticFiles("/", wwwrootPath);
-        AddRoute();
+        ScanControllers();
 
         var ws = new WebSocketManager();
         ws.RegisterWebSocket(api);
@@ -28,7 +28,7 @@ public class PicoServerHost
         api.AddRoute("/iot/notify", HttpHelper.Notify, "GET");
     }
 
-    private void AddRoute()
+    private void ScanControllers()
     {
         var asm = Assembly.GetExecutingAssembly();
         var controllers = asm.GetTypes().Where(t => t.GetCustomAttribute<ApiControllerAttribute>() != null);
