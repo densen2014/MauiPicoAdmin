@@ -21,15 +21,18 @@ public class PicoServerHost
         var product = new ProductController();
         var login = new LoginController();
         var user = new UserController();
+        var ws = new WebSocketManager();
         api.AddStaticFiles("/", wwwrootPath);
         api.AddRoute("/api/hello", demo.Hello);
         api.AddRoute("/api/time", demo.GetTime);
         api.AddRoute("/api/status", demo.GetStatus);
         api.AddRoute("/api/product/list", product.List);
-        api.AddRoute("/api/product/detail", product.Detail); 
-        api.AddRoute("/api/login", login.Login); 
-        api.AddRoute("/api/user/list", user.GetUserList); 
-    }
+        api.AddRoute("/api/product/detail", product.Detail);
+        api.AddRoute("/api/login", login.Login);
+        api.AddRoute("/api/user/list", user.GetUserList);
 
+        ws.RegisterWebSocket(api);
+        api.AddRoute("/iot/notify", HttpHelper.Notify, "GET"); // 长连接推送
+    }
 }
 
