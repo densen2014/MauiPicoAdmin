@@ -32,7 +32,8 @@ public class PicoServerHost
         api.AddRoute("/api/user/list", user.GetUserList);
 
         ws.RegisterWebSocket(api);
-        api.AddRoute("/iot/notify", HttpHelper.Notify, "GET"); // 长连接推送
+        // SSE（Server - Sent Events）推送
+        api.AddRoute("/iot/notify", HttpHelper.Notify, "GET"); 
     }
 }
 
