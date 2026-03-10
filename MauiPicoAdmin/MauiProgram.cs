@@ -1,8 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
-using PicoServer;
 using Syncfusion.Maui.Toolkit.Hosting;
-using System.Net;
 using System.Text.Json;
 
 namespace MauiPicoAdmin;
@@ -61,10 +59,12 @@ public static class MauiProgram
         builder.Services.AddTransientWithShellRoute<ProjectDetailPage, ProjectDetailPageModel>("project");
         builder.Services.AddTransientWithShellRoute<TaskDetailPage, TaskDetailPageModel>("task");
 
-        //builder.Services.AddSingleton(new JsonSerializerOptions
-        //{
-        //    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-        //});
+        builder.Services.AddSingleton(new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true,
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+        });
+
         return builder.Build();
     }
 }

@@ -1,0 +1,35 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+
+@hostname=127.0.0.1
+
+### Hello
+GET http://{{hostname}}:8090/api/hello
+
+### Time
+GET http://{{hostname}}:8090/api/time
+
+### Status
+GET http://{{hostname}}:8090/api/status
+
+### Product List
+GET http://{{hostname}}:8090/api/product/list
+
+### Product Detail
+GET http://{{hostname}}:8090/api/product/detail?id=1
+
+### Login
+### 通过变量和脚本自动提取上一个请求的响应内容，并在下一个请求中复用
+# @name login
+POST http://{{hostname}}:8090/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "123456"
+} 
+
+### User List (with token)
+GET http://{{hostname}}:8090/api/user/list
+Authorization: {{login.response.body.$.token}}
+
+ 

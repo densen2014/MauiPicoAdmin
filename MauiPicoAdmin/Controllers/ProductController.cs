@@ -1,7 +1,5 @@
 ﻿using MauiPicoAdmin.Models;
-using PicoServer;
 using System.Net;
-using System.Text.Json;
 
 namespace MauiPicoAdmin.Controllers;
 
@@ -15,7 +13,7 @@ public class ProductController
 
         var result = ApiResult.Success(data);
 
-        await response.WriteJson(result);
+        await response.WriteJsonAsync(result);
     }
 
     public async Task Detail(HttpListenerRequest request, HttpListenerResponse response)
@@ -26,7 +24,7 @@ public class ProductController
 
         var result = ApiResult.Success(data);
 
-        await response.WriteJson(result);
+        await response.WriteJsonAsync(result);
 
-    }
+    } 
 }

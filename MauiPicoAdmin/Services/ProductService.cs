@@ -14,5 +14,5 @@ public class ProductService
     public object GetProduct(string id)
     {
         return new { id = id, name = "Demo Product", price = 100 };
-    }
+    } 
 }
