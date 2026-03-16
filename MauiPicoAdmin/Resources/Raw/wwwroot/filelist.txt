@@ -1,4 +1,8 @@
 filelist.txt
+icon.png
 index.html
+manifest.json
 product.html
+search.html
+sw.js
 ws.html

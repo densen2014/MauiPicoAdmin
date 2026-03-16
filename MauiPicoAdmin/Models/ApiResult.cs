@@ -13,7 +13,7 @@ public class ApiResult
     [JsonPropertyName("data")]
     public object? Data { get; set; }
 
-    public static ApiResult Success(object data)
+    public static ApiResult Success(object? data)
     {
         return new ApiResult
         {

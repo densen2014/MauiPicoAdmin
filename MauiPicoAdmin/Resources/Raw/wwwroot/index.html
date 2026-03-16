@@ -20,6 +20,10 @@
         
         <button onclick="loadTime()" class="btn btn-primary">获取服务器时间</button>
 
+        <a href="search.html" class="btn btn-primary">
+            搜索商品
+        </a>
+
         <a href="product.html" class="btn btn-primary">
             商品管理
         </a>
@@ -39,6 +43,14 @@
             let data = await res.json();
 
             document.getElementById("result").innerText = data.data.time;
+        }
+
+        // 注册 Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(reg => {
+                    console.log("SW registered");
+                });
         }
 
     </script>
